@@ -3,7 +3,7 @@
     function cadastrar($table, $attributes){
 
         // Faz conexao com o banco
-        $conn = conectar();
+        $pdo = conectar();
 
         // Pegar o indice do array que são o nome dos campos da tabela
         $keys = array_keys($attributes);
@@ -24,11 +24,12 @@
         $values = (trim(ltrim($values, ',')));
 
         // Prepara o SQL
-        $cadastrar = $conn->prepare("insert into $table ($camposTabela) values($values)");
+        $cadastrar = $pdo->prepare("insert into $table ($camposTabela) values($values)");
 
         // Executa o SQL dentro da funcao execute
         $cadastrar->execute($attributes);
 
-        return $conn->lastInsertId();
+        // Retorna ultimo ID cadastrado
+        return $pdo->lastInsertId();
 
     }
