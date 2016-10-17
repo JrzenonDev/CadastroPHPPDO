@@ -1,0 +1,1 @@
+<img src="img/404_05.jpg" alt="image error page 404" style="width: 800px;">
